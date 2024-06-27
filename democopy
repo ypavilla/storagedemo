@@ -1,0 +1,14 @@
+trigger:
+  - dev
+pool:
+  vmImage: windows-latest
+steps:
+  # Copy files to Azure Blob Storage
+  - task: AzureFileCopy@4
+    inputs:
+      sourcePath: '$(build.sourcesdirectory)\\myDirectory'
+      azureSubscription: MY-Production-Subscription
+      destination: akhi
+      storage: adlsg2sf
+      containerName: abinash
+      additionalArgumentsForBlobCopy: --recursive=true
